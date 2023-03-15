@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>Liste voiture</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+</head>
+<body>
+	
+	<div class="container text-center">
+	  <div class="row">
+	    <div class="col">Id</div>
+	    <div class="col">Nom</div>
+	    <div class="col">Marque</div>
+	    <div class="col">Immatriculation</div>
+	    <div class="col">Puissance</div>
+	    <div class="col">Action</div>
+	  </div>
+	  
+<!-- 	  <c:forEach var="act" items="${ listeA }"> -->
+		  <div class="row" th:each="voit : ${ listeV }" th:with="idV=${voit.id}">
+		  	<div class="col" th:text="${ idV }"></div>
+<!-- 		  	<div class="col"><c:out value="${ act.getNom() }"></c:out></div> -->
+		    <div class="col" th:text="${ voit.nom }"></div>
+		    <div class="col" th:text="${ voit.marque }"></div>
+		    <div class="col" th:text="${ voit.immatriculation }"></div>
+		    <div class="col" th:text="${ voit.puissance }"></div>
+		    <div class="col">
+		    	<a th:href="'deleteVoiture/' + ${ idV }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
+		    	<a th:href="'modifVoiture/' + ${ idV }"> <button type="button" class="btn btn-outline-info">Modifier</button></a>
+		    </div>
+		  </div>
+<!-- 	  </c:forEach> -->
+	  
+	</div>
+	
+	
+</body>
+</html>
