@@ -19,22 +19,19 @@
 	    <div class="col">Immatriculation</div>
 	    <div class="col">Puissance</div>
 	    <div class="col">Action</div>
-	    <div class="col"></div>
 	  </div>
 	  
 <!-- 	  <c:forEach var="act" items="${ listeA }"> -->
-		  <div class="row" th:each="voit : ${ listeV }">
-		  	<div class="col" th:text="${ voit.id }"></div>
+		  <div class="row" th:each="voit : ${ listeV }" th:with="idV=${voit.id}">
+		  	<div class="col" th:text="${ idV }"></div>
 <!-- 		  	<div class="col"><c:out value="${ act.getNom() }"></c:out></div> -->
 		    <div class="col" th:text="${ voit.nom }"></div>
 		    <div class="col" th:text="${ voit.marque }"></div>
 		    <div class="col" th:text="${ voit.immatriculation }"></div>
 		    <div class="col" th:text="${ voit.puissance }"></div>
 		    <div class="col">
-		    	<a href="deleteVoiture/${ voit.id }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
-		    </div>
-		    <div class="col">
-		    	<a href="modifVoiture/${ voit.id }"> <button type="button" class="btn btn-outline-danger">Modifier</button></a>
+		    	<a th:href="'deleteVoiture/' + ${ idV }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
+		    	<a th:href="'modifVoiture/' + ${ idV }"> <button type="button" class="btn btn-outline-info">Modifier</button></a>
 		    </div>
 		  </div>
 <!-- 	  </c:forEach> -->
